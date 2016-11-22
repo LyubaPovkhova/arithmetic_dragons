@@ -13,7 +13,7 @@ def generate_random_enemy():
     return enemy
 
 
-def generate_dragon_list(enemy_number):
+def generate_enemy_list(enemy_number):
     enemy_list = [generate_random_enemy() for i in range(enemy_number)]
     return enemy_list
 
@@ -67,4 +67,47 @@ class BlackDragon(Dragon):
 
 
 
-enemy_types = [GreenDragon, RedDragon, BlackDragon]
+
+
+class Troll(Enemy):
+    def set_answer(self, answer):
+        self.__answer = answer
+
+    def check_answer(self, answer):
+        return answer == self.__answer
+
+
+class BlueTroll(Troll):
+    def __init__(self):
+        self._health = 20
+        self._attack = 10
+        self._color = 'синий'
+
+    def question(self):
+        x = randint(1,5)
+        self.__quest = "Угадай число от 1 до 5"
+        self.set_answer(x)
+        return self.__quest
+class WhiteTroll(Troll):
+    def __init__(self):
+        self._health = 20
+        self._attack = 10
+        self._color = 'белый'
+
+    def question(self):
+        x = randint(1,100)
+        self.__quest = 'Является ли число' + str(x) + 'простым?'
+        for i in range (1,x-1):
+            if x%i = 0:
+                self.set_answer(False)
+            else:
+                self.set_answer(True)
+        return self.__quest
+
+
+
+
+
+enemy_types=[BlueTroll, WhiteTroll, GreenDragon, RedDragon, BlackDragon]
+
+
