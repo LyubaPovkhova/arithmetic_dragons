@@ -2,15 +2,6 @@
 # license: GPLv3
 from gameunit import *
 
-#FIXME:
-"""В этом файле должен быть описан класс героя, унаследованный от Attacker
-Герой должен иметь 100 поинтов здоровья, атаку 50, опыт 0, имя, задаваемое в конструкторе
-Метод attack должен получать атрибут target и уменьшать его здоровье на величину атаки.
-
-"""
-class Attacker:
-    _health = None
-    _attack = None
 
 
 
@@ -23,7 +14,9 @@ class Hero(Attacker):
 
     def attack(self, target):
         target._health -= self._attack
-        target._experience += self._attack
+
+    def set_experience(self,experience):
+        self._experience+= experience
 
     def is_alive(self):
         return self._health > 0
